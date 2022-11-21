@@ -1,4 +1,7 @@
+using ChatHub.Config;
 using ChatHub.Data;
+using ChatHub.Hubs;
+using ChatHub.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,10 +33,20 @@ namespace ChatHub
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
             services.AddRazorPages();
+            services.AddSignalR();
+            services.Add(new ServiceDescriptor(typeof(DBStore), new DBStore(Configuration.GetConnectionString("DefaultConnection"))));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,15 +67,25 @@ namespace ChatHub
             app.UseStaticFiles();
 
             app.UseRouting();
-
+           
             app.UseAuthentication();
             app.UseAuthorization();
-
+            /*app.UseSignalR(route =>
+            {
+                route.MapHub<ChatRoom>("/Home/Index");
+            });*/
+            app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                     name: "Chat",
+                     pattern: "{controller=Chat}/{action=Create}/{id?}");
+
+
+                endpoints.MapHub<ChatRoom>("/chatHub");
                 endpoints.MapRazorPages();
             });
         }

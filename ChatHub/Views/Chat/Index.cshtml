@@ -1,0 +1,82 @@
+﻿
+@model IEnumerable<ChatHub.Models.Message>
+@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Mvc;
+@using System;
+@{
+    ViewData["Title"] = "Index";
+    string curruser = @Context.Session.GetString("user");
+    
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+@if (curruser == null || curruser == "")
+{
+    Context.Response.Redirect("/User/Login");
+}
+
+<h1>Chat</h1>
+<div class="container">
+    @*<form action="/Chat/Create" method="post">
+            <div class="row">&nbsp;</div>
+            <div class="row">
+                <div class="col-2">User</div>
+                <div class="col-4"><input type="text" id="userInput" name="userid" /></div>
+            </div>
+            <div class="row">
+                <div class="col-2">Message</div>
+                <div class="col-4"><input type="text" id="messageInput" name="text" /></div>
+            </div>
+            <div class="row">&nbsp;</div>
+            <div class="row">
+                <div class="col-6">
+                    <input type="submit" id="sendButton" value="Send Message" />
+                </div>
+            </div>
+        </form>*@
+    <form action="/Chat/Create" method="post">
+        <label for="userid">User</label><br>
+        <input type="text" id="userInput" name="userid" value=""><br>
+        <label for="text">Message</label><br>
+        <input type="text" id="messageInput" name="text" value="Testing message"><br><br>
+        <input type="submit" value="Submit" id="sendButton">
+    </form>
+</div>
+<div class="row">
+    <div class="col-12">
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <ul id="messagesList">
+            @foreach (var item in Model)
+            {
+                <li>
+                    @Html.DisplayFor(modelItem => item.Username)
+
+                    @Html.DisplayFor(modelItem => item.Text)
+
+                    @Html.DisplayFor(modelItem => item.Date)
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    let globalname;
+    globalname = '@Context.Session.GetString("user")';
+    console.log(globalname);
+
+</script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>
+
+

@@ -21,6 +21,8 @@ namespace ChatHub
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    
                 });
+
     }
 }

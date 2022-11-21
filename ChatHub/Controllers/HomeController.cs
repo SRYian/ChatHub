@@ -1,4 +1,5 @@
-﻿using ChatHub.Models;
+﻿using ChatHub.Config;
+using ChatHub.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -15,12 +16,20 @@ namespace ChatHub.Controllers
 
         public HomeController(ILogger<HomeController> logger)
         {
+
             _logger = logger;
         }
 
         public IActionResult Index()
         {
             return View();
+        }
+
+        public IActionResult ChatLog()
+        {
+            DBStore store = HttpContext.RequestServices.GetService(typeof(ChatHub.Config.DBStore)) as DBStore;
+
+            return View(store.GetAllMessage());
         }
 
         public IActionResult Privacy()

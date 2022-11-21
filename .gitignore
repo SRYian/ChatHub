@@ -358,6 +358,7 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
-
+ChatHub/wwwroot/js/signalr
+\wwwroot\js\signalr
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
