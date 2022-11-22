@@ -1,11 +1,24 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    string user = Context.Session.GetString("user");
 }
 @using Microsoft.AspNetCore.Http;
 @inject IHttpContextAccessor Accessor
 
-<div class="text-center">
-    <h3 class="display-2">Welcome to</h3>
-    <h3 class="display-4">ChatHUB</h3>
-    @Context.Session.GetString("user")
+<div class="h-100 w-100 d-flex flex-column justify-content-center align-items-center">
+
+    <h3 class="text-orange headerfont">WELCOME TO</h3>
+    <img class="w-25" src="/Images/Hub_logo.png" alt="poggers" />
+    @if (user == null || user == "")
+    {
+        
+    }
+    else
+    {
+        <h4 class="py-5 text-orange">
+            HELLO @user, WELCOME BACK
+        </h4>
+    }
+
+
 </div>

@@ -9,50 +9,15 @@
     
 }
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 @if (curruser == null || curruser == "")
 {
     Context.Response.Redirect("/User/Login");
 }
 
-<h1>Chat</h1>
-<div class="container">
-    @*<form action="/Chat/Create" method="post">
-            <div class="row">&nbsp;</div>
-            <div class="row">
-                <div class="col-2">User</div>
-                <div class="col-4"><input type="text" id="userInput" name="userid" /></div>
-            </div>
-            <div class="row">
-                <div class="col-2">Message</div>
-                <div class="col-4"><input type="text" id="messageInput" name="text" /></div>
-            </div>
-            <div class="row">&nbsp;</div>
-            <div class="row">
-                <div class="col-6">
-                    <input type="submit" id="sendButton" value="Send Message" />
-                </div>
-            </div>
-        </form>*@
-    <form action="/Chat/Create" method="post">
-        <label for="userid">User</label><br>
-        <input type="text" id="userInput" name="userid" value=""><br>
-        <label for="text">Message</label><br>
-        <input type="text" id="messageInput" name="text" value="Testing message"><br><br>
-        <input type="submit" value="Submit" id="sendButton">
-    </form>
-</div>
+<img src="./Images/Hub_logo.png" class="w-25" alt="Alternate Text" />
 <div class="row">
-    <div class="col-12">
-        <hr />
-    </div>
-</div>
-<div class="row">
-    <div class="col-6">
+    <div class="col-6 text-white">
         <ul id="messagesList">
             @foreach (var item in Model)
             {
@@ -67,6 +32,21 @@
         </ul>
     </div>
 </div>
+<div class="container">
+    <form action="/Chat/Create" method="post">
+        <label for="userid">User</label><br>
+        <input type="text" id="userInput" name="userid" value=""><br>
+        <label for="text">Message</label><br>
+        <input type="text" id="messageInput" name="text" value="Testing message"><br><br>
+        <input type="submit" value="Submit" id="sendButton">
+    </form>
+</div>
+<div class="row">
+    <div class="col-12">
+        <hr />
+    </div>
+</div>
+
 
 <script type="text/javascript">
 
