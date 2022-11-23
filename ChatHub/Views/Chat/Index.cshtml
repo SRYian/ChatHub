@@ -14,49 +14,51 @@
 {
     Context.Response.Redirect("/User/Login");
 }
-
-<img src="./Images/Hub_logo.png" class="w-25" alt="Alternate Text" />
-<div class="row">
-    <div class="col-6 text-white">
-        <ul id="messagesList">
-            @foreach (var item in Model)
-            {
-                <li>
-                    @Html.DisplayFor(modelItem => item.Username)
-
-                    @Html.DisplayFor(modelItem => item.Text)
-
-                    @Html.DisplayFor(modelItem => item.Date)
-                </li>
-            }
-        </ul>
+<div class="h-100 w-100 mt-lg-5 d-flex flex-column justify-content-start align-items-center">
+    <div class="p-lg-4 bg-col-secondary d-flex flex-column rounded-lg">
+        <img src="./Images/Hub_logo.png" class="align-self-center w-25" alt="Alternate Text" />
+        <div class="row my-4">
+            <div class="text-white">
+                <ul id="messagesList">
+                    @foreach (var item in Model)
+                    {
+                        <li class="msglist d-flex flex-column my-4">
+                            <h5>
+                            @Html.DisplayFor(modelItem => item.Username)
+                            </h5>
+                            <div class="d-flex align-items-end">
+                                <div class="px-3 py-4 bg-col-chat-sec rounded-lg">
+                                @Html.DisplayFor(modelItem => item.Text)
+                                </div>
+                                <small class="mx-2">
+                                @Html.DisplayFor(modelItem => item.Date)
+                                </small>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+        
+        <form class="d-flex align-items-lg-stretch justify-content-around" action="/Chat/Create" method="post">
+            <input class="w-100 mr-3" type="text" placeholder="message" id="messageInput" name="text">
+            <button class="btn orange-bg" type="submit" value="Submit" id="sendButton">Send</button>
+        </form>
+       
     </div>
 </div>
-<div class="container">
-    <form action="/Chat/Create" method="post">
-        <label for="userid">User</label><br>
-        <input type="text" id="userInput" name="userid" value=""><br>
-        <label for="text">Message</label><br>
-        <input type="text" id="messageInput" name="text" value="Testing message"><br><br>
-        <input type="submit" value="Submit" id="sendButton">
-    </form>
-</div>
-<div class="row">
-    <div class="col-12">
-        <hr />
-    </div>
-</div>
+   
 
 
-<script type="text/javascript">
+    <script type="text/javascript">
 
     let globalname;
     globalname = '@Context.Session.GetString("user")';
     console.log(globalname);
 
-</script>
-<script src="~/lib/jquery/dist/jquery.js"></script>
-<script src="~/js/signalr/dist/browser/signalr.js"></script>
-<script src="~/js/chat.js"></script>
+    </script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/chat.js"></script>
 
 

@@ -5,6 +5,8 @@ for details on configuring this project to bundle and minify static web assets. 
     --orange: rgba(247, 150, 29, 1);
     --primary: rgba(21, 27, 32, 1);
     --secondary: rgba(34, 44, 50, 1);
+    --chat-pri: rgba(34, 44, 50, 1);
+    --chat-sec: rgba(61, 83, 89, 1);
     font-family: 'Roboto', sans-serif;
 }
 a.navbar-brand {
@@ -100,4 +102,29 @@ body {
 }
 .bg-col-secondary {
     background-color: var(--secondary);
+}
+.bg-col-chat-pri {
+    background-color: var(--chat-pri);
+}
+.bg-col-chat-sec {
+    background-color: var(--chat-sec);
+}
+
+.msglist{
+    display:flex;
+    flex-direction:column;
+    padding:1.5rem 0 1.5rem 0;
+}
+.msglist>div{
+    display:flex;
+    align-items:end;
+}
+.msglist>div>div{
+     padding: 1.5rem 1rem 1.5rem 1rem;
+     background-color: var(--chat-sec);
+     border-radius:2px;
+
+}
+.msglist>div>small{
+    margin: 0 2px 0 2px;
 }
