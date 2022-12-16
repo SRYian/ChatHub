@@ -1,0 +1,132 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&display=swap');
+:root {
+    --orange: rgba(247, 150, 29, 1);
+    --primary: rgba(21, 27, 32, 1);
+    --secondary: rgba(34, 44, 50, 1);
+    --chat-pri: rgba(34, 44, 50, 1);
+    --chat-sec: rgba(61, 83, 89, 1);
+    font-family: 'Roboto', sans-serif;
+}
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  /*color: #fff;*/
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    /*margin-bottom: 60px;*/
+    background-color: var(--primary);
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+.navbar {
+    background-color: var(--secondary);
+}
+.orange-bg {
+    background-color: var(--orange);
+}
+.text-orange {
+    color: rgba(247, 150, 29, 1);
+}
+
+.border-bottom-orange {
+    border-bottom: 1px solid var(--orange);
+}
+
+.headerfont {
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-weight: 700;
+}
+
+.bg-col-primary {
+    background-color: var(--primary);
+}
+.bg-col-secondary {
+    background-color: var(--secondary);
+}
+.bg-col-chat-pri {
+    background-color: var(--chat-pri);
+}
+.bg-col-chat-sec {
+    background-color: var(--chat-sec);
+}
+
+.msglist{
+    display:flex;
+    flex-direction:column;
+    padding:1.5rem 0 1.5rem 0;
+}
+.msglist>div{
+    display:flex;
+    align-items:end;
+}
+.msglist>div>div{
+     padding: 1.5rem 1rem 1.5rem 1rem;
+     background-color: var(--chat-sec);
+     border-radius:2px;
+
+}
+.msglist>div>small{
+    margin: 0 2px 0 2px;
+}
