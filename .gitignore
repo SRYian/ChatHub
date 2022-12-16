@@ -409,3 +409,11 @@ pom.xml.versionsBackup
 pom.xml.next
 release.properties
 dependency-reduced-pom.xml
+
+JSP-Extend/.mvn/wrapper
+JSP-Extend/src/main/**/target/
+JSP-Extend/src/test/**/target/
+
+*.iws
+*.iml
+*.ipr
